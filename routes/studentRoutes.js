@@ -6,7 +6,7 @@ const {loadStudentPage} = require('../controllers/studentsController')
 
 // ===========================================
 
-
+// GET
 router.get('/', loadStudentPage)
 
 
