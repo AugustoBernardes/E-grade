@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>All Students</title>
+</head>
+<body>
+    <nav class="mb-5 sticky-top d-flex flex-wrap align-items-center justify-content-around p-3" style="background-color: rgb(68, 68, 70);">
+        <div class="d-flex flex-column">
+            <h1 class="text-light">Find a Student</h1>
+            <a onclick="history.back()" class="btn btn-info align-items-center">Back</a>
+        </div>
+        <form class="d-flex  flex-row mt-3" action="/search" method="POST">
+            <input class="form-control" name="search" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-secondary my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+    <div class="container">
+        
+        <form  method="POST" action="/admin/:id?_method=DELETE" class="d-flex flex-column mb-3 p-3 justify-content-around"  style=" background-color: rgb(68, 68, 70); box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.705);">
+            <div class="d-flex flex-row justify-content-around mb-3 mt-3" >
+                <div class="d-flex flex-column justify-content-center"> 
+                    <h4 style="color: black;">Name: Augusto</h4>
+                    <h5 class="text-light">CPF: 02020201023</h5>
+                </div>
+                <div class="d-flex flex-column justify-content-center ">
+                    <h4 style="color: black;">Class Number: 31 </h4>
+                    <h5 class="text-light">Phone: 64 919293932</h5>
+                </div>
+            </div>
+            <div class="container d-flex flex-row  justify-content-around  align-items-center">
+                <a class="btn btn-info" style="font-size: 25px; " href="#">Edit Grade</a>
+                <button class="btn btn-danger " style="font-size: 25px; " type="submit" >Delete</button>
+            </div>
+        </form>
+    </div>
+    <h3 class="text-center mt-3 mb-3">Developed by <a class="text-secondary " style="text-decoration:none;" href="https://github.com/AugustoBernardes" >Augusto</a></h3>
+</body>
+</html>

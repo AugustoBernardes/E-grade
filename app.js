@@ -10,6 +10,7 @@ require('dotenv').config()
 const home = require('./routes/homeRoutes')
 const admin = require('./routes/adminRoutes')
 const student = require('./routes/studentRoutes')
+const undefinedRoute = require('./controllers/undefinedRouteController')
 
 // ===========================================
 
@@ -21,7 +22,7 @@ app.use(cookieParser())
 app.use(methodOverride('_method'))
 
 // Dotenv variables
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3421
 const DB_KEY = process.env.MONGO_DB_KEY 
 
 // Connecting with Data Base
@@ -40,5 +41,6 @@ app.set('views', path.join(__dirname,'templates'))
 app.use('/',home)
 app.use('/admin',admin)
 app.use('/student',student)
+app.use('*', undefinedRoute)
 
 app.listen(PORT,() => {console.log(`Server running on PORT:${PORT}`)})
