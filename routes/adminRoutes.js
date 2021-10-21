@@ -8,7 +8,7 @@ const authentication = require('../controllers/authentication')
 
 // GET
 router.get('/', loadAdminPage )
-router.get('/home',loadHomePage)
+router.get('/home',authentication, loadHomePage)
 router.get('/addstudent',authentication, loadAddStudentPage)
 router.get('/allstudents',authentication, loadAllStudentsPage)
 
