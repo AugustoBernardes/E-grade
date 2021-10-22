@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Edit Page</title>
+</head>
+<body>
+    <div class="d-flex flex-column  align-items-center justify-content-center container" style=" margin-top: 120px; ">
+        <h2 class="mb-5"><%= title %> </h2>
+        <form action="" method="POST" class="d-flex flex-column  align-items-center justify-content-center container">
+            <table class="table table-bordered table-dark">
+                <thead>
+                    <tr>
+                        <% subjects.forEach(subject => {  %> 
+                         <th scope="col"><%=subject  %> </th>
+                        <% }) %> 
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="Portuguese" value="<%= grades.Portuguese %>"></td>
+                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="PE" value="<%= grades.PE %>"></td>
+                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="English" value="<%= grades.English %>"></td>
+                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="Spanish" value="<%= grades.Spanish %>"></td>
+                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="Physic" value="<%= grades.Physic %>"></td>
+                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="Chemistry" value="<%= grades.Chemistry %>"></td>
+                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="Biology" value="<%= grades.Biology %>"></td>
+                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="History" value="<%= grades.History %>"></td>
+                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="Geography" value="<%= grades.Geography %>"></td>
+                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="Philosophy" value="<%= grades.Philosophy %>"></td>
+                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="Sociology" value="<%= grades.Sociology %>"></td>
+    
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-success w-25 mb-3" type="submit">Submit</button>
+        </form>
+        <a href="/admin/allstudents" class="btn btn-info w-25">Back</a>
+    </div>
+    <h3 class="text-center mt-3 mb-3">Developed by <a class="text-secondary " style="text-decoration:none;" href="https://github.com/AugustoBernardes" >Augusto</a></h3>
+</body>
+</html>

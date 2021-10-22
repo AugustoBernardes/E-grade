@@ -132,9 +132,87 @@ const addNewStudent = async (req,res) => {
         res.status(400)
         res.render('errorPage',{message:"Student wasn't save!", url:"/admin/addstudent"})
     }
+}
+
+  // EDIT Student
+
+  const loadGradesMenu = async  (req,res) => {
+    let id = req.params.id
+    
+    try {
+        // Receiving all the Bimester from Data Base
+        let firstBimester = await FirstBimester.findOne({studentId:id})
+        let secondBimester = await SecondBimester.findOne({studentId:id})
+        let thirdBimester = await ThirdBimester.findOne({studentId:id})
+        let fourthBimester = await FourthBimester.findOne({studentId:id})
+
+        // Creating a array with the buttons content
+        let buttons = [
+            {
+                message:'First Bimester',
+                id:firstBimester.id,
+                type:firstBimester.type
+            },
+            {
+                message:'Second Bimester',
+                id:secondBimester.id,
+                type:secondBimester.type
+            },
+            {
+                message:'Third Bimester',
+                id:thirdBimester.id,
+                type:thirdBimester.type
+            },
+            {
+                message:'Fourth Bimester',
+                id:fourthBimester.id,
+                type:fourthBimester.type
+            }
+        ]
+        
+        res.status(200)
+        res.render('gradesMenu', {buttons:buttons})
+    } catch (error) {
+        res.status(400)
+        res.render('errorPage',{message:"Menu wasn't load", url:"/admin/allstudents"})
+    }
+}
+
+const loadEditPage = async (req,res) => {
+    let id = req.params.id
+    let type = req.params.type
+
+    try {
+        if(type == 'first'){
+            let grade = await FirstBimester.findById(id)
+            
+            res.status(200)
+            res.render('editGradePage', {title:'First Bimester',subjects:Subjects, grades:grade})
+        }else if(type == 'second'){
+            let grade = await SecondBimester.findById(id)
 
 
+            res.status(200)
+            res.render('editGradePage', {title:'Second Bimester',subjects:Subjects, grades:grade})
+        }else if(type == 'third'){
+            let grade = await ThirdBimester.findById(id)
+
+            res.status(200)
+            res.render('editGradePage', {title:'Third Bimester',subjects:Subjects, grades:grade})
+        }else if(type == 'fourth'){
+            let grade = await FourthBimester.findById(id)
+
+            res.status(200)
+            res.render('editGradePage', {title:'Fourth Bimester',subjects:Subjects, grades:grade})
+        }else{
+            res.status(400)
+            res.render('errorPage',{message:"Page wasn't load", url:"/admin/allstudents"})
+        }    
+    } catch (error) {
+        res.status(400)
+        res.render('errorPage',{message:"Page wasn't load", url:"/admin/allstudents"})
+    }
 }
 
 
-module.exports = {loadAdminPage,login,loadAllStudentsPage,loadAddStudentPage,addNewStudent,loadHomePage}
+module.exports = {loadAdminPage,login,loadAllStudentsPage,loadAddStudentPage,addNewStudent,loadHomePage,loadGradesMenu,loadEditPage}
