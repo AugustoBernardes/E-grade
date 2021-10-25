@@ -289,6 +289,8 @@ const deleteStudent = async (req,res) => {
     }
 }
 
+// Searching the student
+
 const searchStudent = async (req,res) => {
     let search = req.body.search.trim()
 
