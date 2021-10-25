@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 // ===========================================
 // Controllers
-const {loadAdminPage,login,loadAllStudentsPage,loadAddStudentPage,addNewStudent,loadHomePage,loadGradesMenu,loadEditPage} = require('../controllers/adminController')
+const {loadAdminPage,login,loadAllStudentsPage,loadAddStudentPage,addNewStudent,loadHomePage,loadGradesMenu,loadEditPage,updateGrade,deleteStudent,searchStudent} = require('../controllers/adminController')
 const authentication = require('../controllers/authentication')
 // ===========================================
 
@@ -17,6 +17,11 @@ router.get('/updategrade/:id/:type',authentication,loadEditPage)
 // POST
 router.post('/login',login)
 router.post('/addstudent',addNewStudent)
+router.post('/search',searchStudent)
+router.post('/updategrade/:id/:type',updateGrade)
+
+// DELETE
+router.delete('/:id',deleteStudent)
 
 
 

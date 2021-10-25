@@ -214,5 +214,115 @@ const loadEditPage = async (req,res) => {
     }
 }
 
+const updateGrade = async (req,res) => {
+    let id = req.params.id
+    let type = req.params.type
 
-module.exports = {loadAdminPage,login,loadAllStudentsPage,loadAddStudentPage,addNewStudent,loadHomePage,loadGradesMenu,loadEditPage}
+    // Receiving the grades from body
+    let updatedGrades = {
+        Portuguese:req.body.Portuguese,
+        PE:req.body.PE,
+        English:req.body.English,
+        Spanish:req.body.Spanish,
+        Physic:req.body.Physic,
+        Chemistry:req.body.Chemistry,
+        Biology:req.body.Biology,
+        History:req.body.History,
+        Geography:req.body.Geography,
+        Philosophy:req.body.Philosophy,
+        Sociology:req.body.Sociology,
+    }
+
+    // Updating the grades
+    try {
+        if(type == 'first'){
+
+            await FirstBimester.findByIdAndUpdate(id,updatedGrades)
+
+            res.status(200)
+            res.redirect('/admin/allstudents')
+        }else if(type == 'second'){
+
+            await SecondBimester.findByIdAndUpdate(id,updatedGrades)
+
+            res.status(200)
+            res.redirect('/admin/allstudents')
+        }else if(type == 'third'){
+
+            await ThirdBimester.findByIdAndUpdate(id,updatedGrades)
+
+            res.status(200)
+            res.redirect('/admin/allstudents')
+        }else if(type == 'fourth'){
+
+            await FourthBimester.findByIdAndUpdate(id,updatedGrades)
+
+            res.status(200)
+            res.redirect('/admin/allstudents')
+        }else{
+            res.status(400)
+            res.render('errorPage',{message:"Page wasn't load", url:"/admin/allstudents"})
+        }   
+    } catch (error) {
+        res.status(400)
+        res.render('errorPage',{message:"Page wasn't load", url:"/admin/allstudents"})
+    }
+}
+
+const deleteStudent = async (req,res) => {
+    let id = req.params.id
+
+    // Deleting the student
+    try {
+        await FirstBimester.findOneAndDelete({studentId:id})
+        await SecondBimester.findOneAndDelete({studentId:id})
+        await ThirdBimester.findOneAndDelete({studentId:id})
+        await FourthBimester.findOneAndDelete({studentId:id})
+
+        await Student.findByIdAndDelete(id)
+
+        res.status(200)
+        res.redirect('/admin/allstudents')
+    } catch (error) {
+        res.status(400)
+        res.render('errorPage',{message:"Student wasn't delete!", url:"/admin/allstudents"})
+    }
+}
+
+const searchStudent = async (req,res) => {
+    let search = req.body.search.trim()
+
+    try {
+        if(search === ''){
+            res.status(400)
+            res.render('errorPage',{message:"Can't search empty string!", url:"/admin/allstudents"})
+        }else{
+            let studentsFound = await Student.aggregate([
+                {
+                  $search: {
+                    index: 'default',
+                    text: {
+                      query: search,
+                      path: {
+                        'wildcard': '*'
+                      }
+                    }
+                  }
+                }
+            ])
+
+            if(studentsFound.length === 0){
+                res.status(400)
+                res.render('errorPage',{message:"Any student found !", url:"/admin/allstudents"})
+            }else{
+                res.status(200)
+                res.render('allStudents',{students:studentsFound})
+            }
+        }
+    } catch (error) {
+        res.status(400)
+        res.render('errorPage',{message:"Happened a error at search engine!", url:"/admin/allstudents"})
+    }
+}
+
+module.exports = {loadAdminPage,login,loadAllStudentsPage,loadAddStudentPage,addNewStudent,loadHomePage,loadGradesMenu,loadEditPage,updateGrade,deleteStudent,searchStudent}

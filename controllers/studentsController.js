@@ -5,4 +5,5 @@ const loadStudentPage = (req,res) => {
     
 }
 
+
 module.exports = {loadStudentPage}

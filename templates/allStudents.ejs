@@ -13,7 +13,7 @@
             <h1 class="text-light">Find a Student</h1>
         </div>
         <div class="d-flex flex-column">
-            <form class="d-flex  flex-row mt-3" action="/search" method="POST">
+            <form class="d-flex  flex-row mt-3" action="/admin/search" method="POST">
                 <input class="form-control" name="search" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-secondary my-sm-0" type="submit">Search</button>
             </form>
@@ -30,7 +30,7 @@
     <% }else{ %>
         <% students.forEach(student => { %>   
             <div class="container">
-                <form  method="POST" action="/admin/:id?_method=DELETE" class="d-flex flex-column bg-secondary mb-3 p-3 justify-content-around"  style="box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.705);">
+                <form  method="POST" action="/admin/<%=student.id %>?_method=DELETE" class="d-flex flex-column bg-secondary mb-3 p-3 justify-content-around"  style="box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.705);">
                     <div class="d-flex flex-row justify-content-around mb-3 mt-3" >
                         <div class="d-flex flex-column justify-content-center"> 
                             <h4 style="color: black;">Name: <%= student.name %> </h4>

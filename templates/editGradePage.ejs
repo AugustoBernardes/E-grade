@@ -10,8 +10,8 @@
 <body>
     <div class="d-flex flex-column  align-items-center justify-content-center container" style=" margin-top: 120px; ">
         <h2 class="mb-5"><%= title %> </h2>
-        <form action="" method="POST" class="d-flex flex-column  align-items-center justify-content-center container">
-            <table class="table table-bordered table-dark">
+        <form action="/admin/updategrade/<%= grades.id %>/<%= grades.type %>" method="POST" class="d-flex flex-column  align-items-center justify-content-center container">
+            <table class="table  table-bordered table-dark">
                 <thead>
                     <tr>
                         <% subjects.forEach(subject => {  %> 
@@ -21,17 +21,17 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="Portuguese" value="<%= grades.Portuguese %>"></td>
-                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="PE" value="<%= grades.PE %>"></td>
-                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="English" value="<%= grades.English %>"></td>
-                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="Spanish" value="<%= grades.Spanish %>"></td>
-                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="Physic" value="<%= grades.Physic %>"></td>
-                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="Chemistry" value="<%= grades.Chemistry %>"></td>
-                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="Biology" value="<%= grades.Biology %>"></td>
-                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="History" value="<%= grades.History %>"></td>
-                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="Geography" value="<%= grades.Geography %>"></td>
-                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="Philosophy" value="<%= grades.Philosophy %>"></td>
-                        <td class="text-center"><input style="max-width: 30px;" type="tel" class="text-center"  maxlength="2" name="Sociology" value="<%= grades.Sociology %>"></td>
+                        <td class="text-center"><input style="max-width: 40px;" type="tel" class="text-center"  maxlength="3" name="Portuguese" value="<%= grades.Portuguese %>"></td>
+                        <td class="text-center"><input style="max-width: 40px;" type="tel" class="text-center"  maxlength="3" name="PE" value="<%= grades.PE %>"></td>
+                        <td class="text-center"><input style="max-width: 40px;" type="tel" class="text-center"  maxlength="3" name="English" value="<%= grades.English %>"></td>
+                        <td class="text-center"><input style="max-width: 40px;" type="tel" class="text-center"  maxlength="3" name="Spanish" value="<%= grades.Spanish %>"></td>
+                        <td class="text-center"><input style="max-width: 40px;" type="tel" class="text-center"  maxlength="3" name="Physic" value="<%= grades.Physic %>"></td>
+                        <td class="text-center"><input style="max-width: 40px;" type="tel" class="text-center"  maxlength="3" name="Chemistry" value="<%= grades.Chemistry %>"></td>
+                        <td class="text-center"><input style="max-width: 40px;" type="tel" class="text-center"  maxlength="3" name="Biology" value="<%= grades.Biology %>"></td>
+                        <td class="text-center"><input style="max-width: 40px;" type="tel" class="text-center"  maxlength="3" name="History" value="<%= grades.History %>"></td>
+                        <td class="text-center"><input style="max-width: 40px;" type="tel" class="text-center"  maxlength="3" name="Geography" value="<%= grades.Geography %>"></td>
+                        <td class="text-center"><input style="max-width: 40px;" type="tel" class="text-center"  maxlength="3" name="Philosophy" value="<%= grades.Philosophy %>"></td>
+                        <td class="text-center"><input style="max-width: 40px;" type="tel" class="text-center"  maxlength="3" name="Sociology" value="<%= grades.Sociology %>"></td>
     
                     </tr>
                 </tbody>
