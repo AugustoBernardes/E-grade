@@ -30,7 +30,7 @@
     <% }else{ %>
         <% students.forEach(student => { %>   
             <div class="container">
-                <form  method="POST" action="/admin/<%=student.id %>?_method=DELETE" class="d-flex flex-column bg-secondary mb-3 p-3 justify-content-around"  style="box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.705);">
+                <form  method="GET" action="/admin/confirmingdelete/<%=student.id %>?_method=DELETE" class="d-flex flex-column bg-secondary mb-3 p-3 justify-content-around"  style="box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.705);">
                     <div class="d-flex flex-row justify-content-around mb-3 mt-3" >
                         <div class="d-flex flex-column justify-content-center"> 
                             <h4 style="color: black;">Name: <%= student.name %> </h4>

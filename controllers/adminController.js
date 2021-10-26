@@ -269,10 +269,18 @@ const updateGrade = async (req,res) => {
     }
 }
 
+ // Deleting the student
+
+ const confirmingDeleteStudent = (req,res) => {
+    let id = req.params.id
+
+    res.status(200)
+    res.render('confirmationPage', {action:`/admin/${id}?_method=DELETE`, returnUrl:'/admin/allstudents', message:'Do you really want delete this student ?'})
+ }
+
 const deleteStudent = async (req,res) => {
     let id = req.params.id
 
-    // Deleting the student
     try {
         await FirstBimester.findOneAndDelete({studentId:id})
         await SecondBimester.findOneAndDelete({studentId:id})
@@ -289,6 +297,76 @@ const deleteStudent = async (req,res) => {
     }
 }
 
+// Cleaning all the grades
+
+const confirmingCleanGrades = async (req,res) => {
+
+    res.status(200)
+    res.render('confirmationPage', {action:`/admin/cleanthegrades`, returnUrl:'/admin/home', message:'Do you really want clean all the grades ?'})
+}
+
+const cleanAllGrades = async (req,res) => {
+    try {
+        let students = await Student.find({})
+
+        if(students.length === 0){
+            res.status(400)
+            res.render('errorPage',{message:"Don't have students , add one first!", url:"/admin/home"})
+        }else{
+            // Cleaning the fields
+            let grades = {
+                Portuguese:0,
+                PE:0,
+                English:0,
+                Spanish:0,
+                Physic:0,
+                Chemistry:0,
+                Biology:0,
+                History:0,
+                Geography:0,
+                Philosophy:0,
+                Sociology:0,
+            }
+    
+            students.forEach(async (student) => {
+                // getting the student ID
+                let id = student.id
+
+                // Filter to find
+                let filter = {studentId:id}
+
+                // Cleaning the grades
+                await FirstBimester.findOneAndUpdate(filter,grades, {
+                    new: true,
+                    upsert: true // Make this update into an upsert
+                })
+
+                await SecondBimester.findOneAndUpdate(filter,grades, {
+                    new: true,
+                    upsert: true // Make this update into an upsert
+                })
+
+                await ThirdBimester.findOneAndUpdate(filter,grades, {
+                    new: true,
+                    upsert: true // Make this update into an upsert
+                })
+
+                await FourthBimester.findOneAndUpdate(filter,grades, {
+                    new: true,
+                    upsert: true // Make this update into an upsert
+                })
+            })
+    
+            res.status(200)
+            res.redirect('/admin/home')
+        }
+        
+    } catch (error) {
+        res.status(400)
+        res.render('errorPage',{message:"Happened a error!, try again later!", url:"/admin/home"})
+    }
+   
+}
 // Searching the student
 
 const searchStudent = async (req,res) => {
@@ -327,4 +405,4 @@ const searchStudent = async (req,res) => {
     }
 }
 
-module.exports = {loadAdminPage,login,loadAllStudentsPage,loadAddStudentPage,addNewStudent,loadHomePage,loadGradesMenu,loadEditPage,updateGrade,deleteStudent,searchStudent}
+module.exports = {loadAdminPage,login,loadAllStudentsPage,loadAddStudentPage,addNewStudent,loadHomePage,loadGradesMenu,loadEditPage,updateGrade,confirmingDeleteStudent,deleteStudent,confirmingCleanGrades,cleanAllGrades,searchStudent}
