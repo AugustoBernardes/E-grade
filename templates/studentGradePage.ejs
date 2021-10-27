@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Grade</title>
+</head>
+<body>
+    <div class="d-flex flex-column  align-items-center justify-content-center container" style=" margin-top: 40px; ">
+        <h2 class="mb-3"><%= title %> </h2>
+        <h3 class="mb-3"><%= subtitle %> </h3>
+            <table class="table  table-bordered table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Bimesters</th>
+                        <% subjects.forEach(subject => {  %> 
+                         <th scope="col"><%=subject  %> </th>
+                        <% }) %> 
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="text-center" scope="col">1º</th>
+                        <td class="text-center"><%= first.Portuguese %></td>
+                        <td class="text-center"><%= first.PE %></td>
+                        <td class="text-center"><%= first.English %></td>
+                        <td class="text-center"><%= first.Spanish %></td>
+                        <td class="text-center"><%= first.Physic %></td>
+                        <td class="text-center"><%= first.Chemistry %></td>
+                        <td class="text-center"><%= first.Biology %></td>
+                        <td class="text-center"><%= first.History %></td>
+                        <td class="text-center"><%= first.Geography %></td>
+                        <td class="text-center"><%= first.Philosophy %></td>
+                        <td class="text-center"><%= first.Sociology %></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center" scope="col">2º</th>
+                        <td class="text-center"><%= second.Portuguese %></td>
+                        <td class="text-center"><%= second.PE %></td>
+                        <td class="text-center"><%= second.English %></td>
+                        <td class="text-center"><%= second.Spanish %></td>
+                        <td class="text-center"><%= second.Physic %></td>
+                        <td class="text-center"><%= second.Chemistry %></td>
+                        <td class="text-center"><%= second.Biology %></td>
+                        <td class="text-center"><%= second.History %></td>
+                        <td class="text-center"><%= second.Geography %></td>
+                        <td class="text-center"><%= second.Philosophy %></td>
+                        <td class="text-center"><%= second.Sociology %></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center" scope="col">3º</th>
+                        <td class="text-center"><%= third.Portuguese %></td>
+                        <td class="text-center"><%= third.PE %></td>
+                        <td class="text-center"><%= third.English %></td>
+                        <td class="text-center"><%= third.Spanish %></td>
+                        <td class="text-center"><%= third.Physic %></td>
+                        <td class="text-center"><%= third.Chemistry %></td>
+                        <td class="text-center"><%= third.Biology %></td>
+                        <td class="text-center"><%= third.History %></td>
+                        <td class="text-center"><%= third.Geography %></td>
+                        <td class="text-center"><%= third.Philosophy %></td>
+                        <td class="text-center"><%= third.Sociology %></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center" scope="col">4º</th>
+                        <td class="text-center"><%= fourth.Portuguese %></td>
+                        <td class="text-center"><%= fourth.PE %></td>
+                        <td class="text-center"><%= fourth.English %></td>
+                        <td class="text-center"><%= fourth.Spanish %></td>
+                        <td class="text-center"><%= fourth.Physic %></td>
+                        <td class="text-center"><%= fourth.Chemistry %></td>
+                        <td class="text-center"><%= fourth.Biology %></td>
+                        <td class="text-center"><%= fourth.History %></td>
+                        <td class="text-center"><%= fourth.Geography %></td>
+                        <td class="text-center"><%= fourth.Philosophy %></td>
+                        <td class="text-center"><%= fourth.Sociology %></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        <button onclick="window.print()" class="btn btn-info w-25 mb-2 mt-4">Dowload Grade</button>
+        <a href="/" class="btn btn-info w-25">Back</a>
+    </div>
+    <h3 class="text-center mt-3 mb-3">Developed by <a class="text-secondary " style="text-decoration:none;" href="https://github.com/AugustoBernardes" >Augusto</a></h3>
+</body>
+</html>

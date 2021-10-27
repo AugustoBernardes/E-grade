@@ -1,7 +1,11 @@
 const AdminUser = require('../model/adminModel')
 const jwt = require('jsonwebtoken')
 // Student Model
+// ===========================================
 const Student = require('../model/studentModel')
+// Validating student data
+// ===========================================
+const ValidateStudent = require('../controllers/validateStudent')
 // Subject Model
 // ===========================================
 const Subjects = require('../model/subjectsModel')
@@ -68,70 +72,77 @@ const loadAddStudentPage = (req,res) => {
 }
 
 const addNewStudent = async (req,res) => {
-    // Receiving the data
-    let studentName = req.body.name.trim()
-    let studentCpf = req.body.cpf.trim()
-    let StudentPhone = req.body.phone.trim()
-    let classNumber = req.body.classNumber.trim()
 
-    try {
-        // Creating the object
-        let student = {
-            name: studentName,
-            cpf: studentCpf,
-            phone: StudentPhone,
-            classNumber:classNumber
-        }
-
-        // Cheking if have someone with this CPF
-        let chekingCpf = await Student.findOne({cpf:studentCpf})
-
-        if(chekingCpf != null){
-            res.render('errorPage',{message:"Already have a student with this CPF!", url:"/admin/addstudent"})
-        }else{
-            // Saving the user
-            student = new Student(student)
-            await student.save()
-
-            // Adding the bimester for the Student
-            let StudentFound = await Student.findOne({cpf:studentCpf})
-
-            let firstBimester = {
-                studentId:StudentFound.id
-            }
-            
-            let secondBimester = {
-                studentId:StudentFound.id
-            }
-            
-            let thirdBimester = {
-                studentId:StudentFound.id
-            }
-            
-            let fourthBimester = {
-                studentId:StudentFound.id
-            }
-            
-            // Sending to Data  Base
-            firstBimester = new FirstBimester(firstBimester)
-            secondBimester = new SecondBimester(secondBimester)
-            thirdBimester = new ThirdBimester(thirdBimester)
-            fourthBimester = new FourthBimester(fourthBimester)
-
-            await firstBimester.save()
-            await secondBimester.save()
-            await thirdBimester.save()
-            await fourthBimester.save()
-
-            res.status(200)
-            res.redirect('/admin/allstudents')
-        }
-
-
-    } catch (error) {
+    const {error} = ValidateStudent(req.body)
+    if(error){
         res.status(400)
-        res.render('errorPage',{message:"Student wasn't save!", url:"/admin/addstudent"})
+        res.render('errorPage',{message:'Complete all the inputs correctly!', url:"/admin/home"})
+    }else{
+        // Receiving the data
+        let studentName = req.body.name.trim()
+        let studentCpf = req.body.cpf.trim()
+        let StudentPhone = req.body.phone.trim()
+        let classNumber = req.body.classNumber.trim()
+
+        try {
+            // Creating the object
+            let student = {
+                name: studentName,
+                cpf: studentCpf,
+                phone: StudentPhone,
+                classNumber:classNumber
+            }
+
+            // Cheking if have someone with this CPF
+            let chekingCpf = await Student.findOne({cpf:studentCpf})
+
+            if(chekingCpf != null){
+                res.render('errorPage',{message:"Already have a student with this CPF!", url:"/admin/addstudent"})
+            }else{
+                // Saving the user
+                student = new Student(student)
+                await student.save()
+
+                // Adding the bimester for the Student
+                let StudentFound = await Student.findOne({cpf:studentCpf})
+
+                let firstBimester = {
+                    studentId:StudentFound.id
+                }
+                
+                let secondBimester = {
+                    studentId:StudentFound.id
+                }
+                
+                let thirdBimester = {
+                    studentId:StudentFound.id
+                }
+                
+                let fourthBimester = {
+                    studentId:StudentFound.id
+                }
+                
+                // Sending to Data  Base
+                firstBimester = new FirstBimester(firstBimester)
+                secondBimester = new SecondBimester(secondBimester)
+                thirdBimester = new ThirdBimester(thirdBimester)
+                fourthBimester = new FourthBimester(fourthBimester)
+
+                await firstBimester.save()
+                await secondBimester.save()
+                await thirdBimester.save()
+                await fourthBimester.save()
+
+                res.status(200)
+                res.redirect('/admin/allstudents')
+            }
+
+        } catch (error) {
+            res.status(400)
+            res.render('errorPage',{message:"Student wasn't save!", url:"/admin/addstudent"})
+        }
     }
+   
 }
 
   // EDIT Student

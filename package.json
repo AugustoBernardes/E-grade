@@ -9,6 +9,7 @@
   "author": "Augusto Bernardes",
   "license": "ISC",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "bcrypt-nodejs": "^0.0.3",
     "cookie-parser": "^1.4.5",
     "dotenv": "^10.0.0",
