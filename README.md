@@ -14,7 +14,7 @@
 + Delete the student
 + Search Engine to find the student
 ---
-## Additionanal functions
+## additional functions
 
 + Separete routes (Admin and Student)
 + Validate the new student added using @hapi/joi
