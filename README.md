@@ -28,7 +28,7 @@
 + You can change the NPM start to node instead nodemon
 + Don't forget to change the file (.env_example) to (.env )
 + On .env put all your variables 
-+ Server will run in http://localhost:(Your .env PORT)
++ Server will run in localhost !
 ---
 ## Technologies Used:
 
