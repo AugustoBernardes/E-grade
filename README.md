@@ -24,7 +24,7 @@
 ## Observations 
 + Don't forget to add a password on your DataBase to admina rea work
 + Front-End part can have some problems , my focus is Back-End
-+ Use npm install do dowload all the dependencies
++ Use npm install to dowload all the dependencies
 + You can change the NPM start to node instead nodemon
 + Don't forget to change the file (.env_example) to (.env )
 + On .env put all your variables 
