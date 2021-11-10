@@ -58,8 +58,6 @@
   
   $ npm install jsonwebtoken
   
-  $ npm install cookie-parser
-  
 ```
 ---
 ## How to test ?
