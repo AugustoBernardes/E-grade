@@ -22,7 +22,7 @@
 + Option to dowload the grades in PDF
 ---
 ## Observations 
-+ Don't forget to add a password on your DataBase to admina rea work
++ Don't forget to add a password on your DataBase to admin area work
 + Front-End part can have some problems , my focus is Back-End
 + Use npm install to dowload all the dependencies
 + You can change the NPM start to node instead nodemon
